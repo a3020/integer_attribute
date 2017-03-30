@@ -22,6 +22,14 @@ class Controller extends \Concrete\Core\Attribute\Controller
 		return (int) $db->fetchColumn("SELECT value FROM atInteger where avID = ?", array($this->getAttributeValueID()));
 	}
 
+    /**
+     * @return int
+     */
+    public function getDisplayValue()
+    {
+        return $this->getValue();
+    }
+
 	/**
 	 * @param $list
 	 * @return mixed
