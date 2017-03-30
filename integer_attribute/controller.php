@@ -1,5 +1,4 @@
 <?php
-
 namespace Concrete\Package\IntegerAttribute;
 
 use Concrete\Core\Package\Package;
