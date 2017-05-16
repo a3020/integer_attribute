@@ -1,13 +1,14 @@
 <?php
+
 namespace Concrete\Package\IntegerAttribute\Attribute\Integer;
 
 use Core;
 use Database;
 
-class Controller extends \Concrete\Core\Attribute\Controller
+class controller extends \Concrete\Core\Attribute\Controller
 {
     protected $searchIndexFieldDefinition = [
-        'type' => 'integer',
+        'type'    => 'integer',
         'options' => ['precision' => 14, 'scale' => 0, 'default' => 0, 'notnull' => false],
     ];
 
@@ -18,7 +19,7 @@ class Controller extends \Concrete\Core\Attribute\Controller
     {
         $db = Database::connection();
 
-        return (int) $db->fetchColumn("SELECT value FROM atInteger where avID = ?", [$this->getAttributeValueID()]);
+        return (int) $db->fetchColumn('SELECT value FROM atInteger where avID = ?', [$this->getAttributeValueID()]);
     }
 
     /**
@@ -53,7 +54,7 @@ class Controller extends \Concrete\Core\Attribute\Controller
     {
         $f = Core::make('helper/form');
         $html = $f->number($this->field('from'), $this->request('from'), ['step' => 1]);
-        $html .= ' ' . t('to') . ' ';
+        $html .= ' '.t('to').' ';
         $html .= $f->number($this->field('to'), $this->request('to'), ['step' => 1]);
         echo $html;
     }
@@ -66,7 +67,7 @@ class Controller extends \Concrete\Core\Attribute\Controller
 
         echo Core::make('helper/form')->number($this->field('value'), $value, [
             'style' => 'width:80px',
-            'step' => 1,
+            'step'  => 1,
         ]);
     }
 
@@ -94,7 +95,7 @@ class Controller extends \Concrete\Core\Attribute\Controller
         $db = Database::connection();
         $arr = $this->attributeKey->getAttributeValueIDList();
         foreach ($arr as $id) {
-            $db->executeQuery("DELETE FROM atNumber WHERE avID = ?", [$id]);
+            $db->executeQuery('DELETE FROM atNumber WHERE avID = ?', [$id]);
         }
     }
 
@@ -106,6 +107,6 @@ class Controller extends \Concrete\Core\Attribute\Controller
     public function deleteValue()
     {
         $db = Database::connection();
-        $db->executeQuery("DELETE FROM atNumber WHERE avID = ?", [$this->getAttributeValueID()]);
+        $db->executeQuery('DELETE FROM atNumber WHERE avID = ?', [$this->getAttributeValueID()]);
     }
 }
