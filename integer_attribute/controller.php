@@ -1,11 +1,12 @@
 <?php
+
 namespace Concrete\Package\IntegerAttribute;
 
-use Concrete\Core\Package\Package;
 use Concrete\Core\Attribute\Key\Category as AttributeKeyCategory;
 use Concrete\Core\Attribute\Type as AttributeType;
+use Concrete\Core\Package\Package;
 
-class Controller extends Package
+class controller extends Package
 {
     protected $pkgHandle = 'integer_attribute';
     protected $appVersionRequired = '5.7.5';
