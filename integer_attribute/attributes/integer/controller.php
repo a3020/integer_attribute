@@ -112,4 +112,23 @@ class Controller extends \Concrete\Core\Attribute\Controller
         $db = Database::connection();
         $db->executeQuery("DELETE FROM atInteger WHERE avID = ?", [$this->getAttributeValueID()]);
     }
+
+    /**
+     * Without checking this, we would get errors like:
+     * Call to a member function getAttributeValueID() on null
+     *
+     * @return bool
+     */
+    protected function hasAttributeValueID(): bool
+    {
+        if (!$this->attributeValue) {
+            return false;
+        }
+
+        if (!$this->attributeValue->getGenericValue()) {
+            return false;
+        }
+
+        return true;
+    }
 }
