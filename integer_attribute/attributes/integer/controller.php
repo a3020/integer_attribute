@@ -94,7 +94,7 @@ class Controller extends \Concrete\Core\Attribute\Controller
         $db = Database::connection();
         $arr = $this->attributeKey->getAttributeValueIDList();
         foreach ($arr as $id) {
-            $db->executeQuery("DELETE FROM atNumber WHERE avID = ?", [$id]);
+            $db->executeQuery("DELETE FROM atInteger WHERE avID = ?", [$id]);
         }
     }
 
@@ -106,6 +106,6 @@ class Controller extends \Concrete\Core\Attribute\Controller
     public function deleteValue()
     {
         $db = Database::connection();
-        $db->executeQuery("DELETE FROM atNumber WHERE avID = ?", [$this->getAttributeValueID()]);
+        $db->executeQuery("DELETE FROM atInteger WHERE avID = ?", [$this->getAttributeValueID()]);
     }
 }
