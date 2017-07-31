@@ -105,6 +105,10 @@ class Controller extends \Concrete\Core\Attribute\Controller
 
     public function deleteValue()
     {
+        if (!$this->hasAttributeValueID()) {
+            return;
+        }
+
         $db = Database::connection();
         $db->executeQuery("DELETE FROM atInteger WHERE avID = ?", [$this->getAttributeValueID()]);
     }
